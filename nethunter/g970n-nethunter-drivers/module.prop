@@ -1,0 +1,6 @@
+id=g970n-nethunter-drivers
+name=G970N NetHunter USB Serial and CAN Drivers
+version=1.0
+versionCode=1
+author=Local Artisan/PomPomSU build
+description=Matching USB serial and SocketCAN modules for the G970N Artisan PomPomSU NetHunter kernel.

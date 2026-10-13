@@ -1928,7 +1928,8 @@ int do_execve(struct filename *filename,
 	struct user_arg_ptr argv = { .ptr.native = __argv };
 	struct user_arg_ptr envp = { .ptr.native = __envp };
 #ifdef CONFIG_KSU
-	ksu_handle_execveat((int *)AT_FDCWD, &filename, &argv, &envp, 0);
+	int ksu_fd = AT_FDCWD;
+	ksu_handle_execveat(&ksu_fd, &filename, &argv, &envp, NULL);
 #endif
 	return do_execveat_common(AT_FDCWD, filename, argv, envp, 0);
 }

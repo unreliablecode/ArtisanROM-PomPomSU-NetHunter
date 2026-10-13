@@ -1,47 +1,44 @@
-## Build instructions:
+# ArtisanROM + PomPomSU + NetHunter
 
-1. Set up build environment as per Google documentation
+Kernel source for the Korean Galaxy S10e (SM-G970N) running ArtisanROM.
 
-https://source.android.com/docs/setup/start/requirements
+Based on [Artisan's Exynos 9820 kernel](https://github.com/Android-Artisan/android_kernel_samsung_exynos9820), commit `9a0a792d227c`, with Linux 4.14.356 and PomPomSU 3.4.1. The root driver uses manual hooks, version 33333 and UAPI 5. Its trusted manager package is `com.pomni.unreliablecode`.
 
-* The `libarchive-tools` package is also necessary to patch the toolchain.
-* The `ccache` package is necessary if you wish to build with CCache (Quicker subsequest builds)
+## Support
 
-2. Properly clone repository with submodules (KernelSU and toolchains)
+- USB HID, ACM, generic serial, RNDIS and mass storage.
+- CH341, CP210X, FTDI and PL2303 serial adapters.
+- SocketCAN through `gs_usb`, `slcan` and `vcan`.
+- RTL8188EU with embedded firmware, alongside Artisan's existing wireless drivers.
+- TUN, packet sockets and the Kali NetHunter chroot.
 
-```git clone --recurse-submodules https://github.com/Android-Artisan/android_kernel_samsung_exynos9820.git```
+The PomPomSU changes fix package scanning under filesystem locks, seccomp declarations and the SELinux status hook's 4.14 page-pointer handling. The customized kernel code is included under `KernelSU-Next`; it does not need a submodule checkout.
 
-3. Build for your device without CCache and with KSU
+## Build
 
-```./build.sh -m beyond1lte -k y -c n```
+Use Linux with Clang and LLD 19.1.7, Make, Python 3, Bison, Flex, bc, OpenSSL development headers and libelf development headers.
 
-3. Build for all devices with or without KSU
+```sh
+git clone https://github.com/unreliablecode/ArtisanROM-PomPomSU-NetHunter.git
+cd ArtisanROM-PomPomSU-NetHunter
+export LLVM_BIN=/usr/lib/llvm-19/bin
+./build-g970n.sh
+```
 
-```./build_all.sh -k y```
+The image, matching modules and driver packages are written to `out-g970n/artifacts`. `JOBS` and `OUT` can override the parallel job count and output directory.
 
-4. Fetch the flashable zip of the kernel that was just compiled
+## Installation
 
-```build/out/[your_device]/ArtisanKRNL...zip```
+Repack `Image` with the ramdisk and boot header from the installed G970N ROM. Keep a backup of BOOT and use modules from the same build. This repository does not flash partitions or replace recovery.
 
-5. Flash it using a supported recovery like TWRP either using the install function or ADB Sideload
+The generated driver directories are data-only KernelSU modules. Their startup scripts check the running kernel release before loading anything.
 
-6. Enjoy!
+## Device tests
 
-Linux kernel
-============
+On ArtisanROM Android 16, r3 booted with root, passed SELinux status read/mmap checks under an app UID with seccomp enabled, and loaded all eight drivers after reboot. Kali reported the expected kernel release.
 
-This file was moved to Documentation/admin-guide/README.rst
+Wired USB remains intermittent. The fault also occurred with the original kernel and with optional drivers disabled. External Wi-Fi injection and Apple-device discovery have not been verified.
 
-Please notice that there are several guides for kernel developers and users.
-These guides can be rendered in a number of formats, like HTML and PDF.
+## Credits and licensing
 
-In order to build the documentation, use ``make htmldocs`` or
-``make pdfdocs``.
-
-There are various text files in the Documentation/ subdirectory,
-several of them using the Restructured Text markup notation.
-See Documentation/00-INDEX for a list of what is contained in each file.
-
-Please read the Documentation/process/changes.rst file, as it contains the
-requirements for building and running the kernel, and information about
-the problems which may result by upgrading your kernel.
+Artisan supplies the Samsung kernel base. PomPomSU derives from KernelSU-Next. Existing notices are retained in `COPYING` and the KernelSU license files. Realtek firmware is distributed under `firmware/rtlwifi/LICENCE.rtlwifi_firmware.txt`.

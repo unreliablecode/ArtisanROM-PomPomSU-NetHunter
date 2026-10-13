@@ -131,3 +131,7 @@ kernel/configs/android-*.cfg
 *.patch
 out/
 toolchain/
+# Local G970N builds
+/out-g970n/
+/out-clang19/
+/out-validate/

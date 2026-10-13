@@ -1,0 +1,132 @@
+[
+  {
+    "upstream": "kernel/Kbuild",
+    "destination": "kernel/Kbuild",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/core/init.c",
+    "destination": "kernel/core/init.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/feature/adb_root.c",
+    "destination": "kernel/feature/adb_root.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/feature/selinux_hide.c",
+    "destination": "kernel/feature/selinux_hide.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/feature/sucompat.c",
+    "destination": "kernel/feature/sucompat.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/hook/patch_memory.h",
+    "destination": "kernel/hook/patch_memory.h",
+    "conflict": false
+  },
+  {
+    "upstream": "kernel/hook/riscv64/insn.h",
+    "result": "not used by Eend15 manual hook architecture"
+  },
+  {
+    "upstream": "kernel/hook/riscv64/patch_memory.c",
+    "result": "not used by Eend15 manual hook architecture"
+  },
+  {
+    "upstream": "kernel/hook/riscv64/syscall_hook.c",
+    "result": "not used by Eend15 manual hook architecture"
+  },
+  {
+    "upstream": "kernel/hook/riscv64/syscall_regs.h",
+    "result": "not used by Eend15 manual hook architecture"
+  },
+  {
+    "upstream": "kernel/hook/syscall_event_bridge.c",
+    "result": "not used by Eend15 manual hook architecture"
+  },
+  {
+    "upstream": "kernel/hook/syscall_hook.h",
+    "destination": "kernel/hook/syscall_table_hook.h",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/hook/syscall_hook_manager.c",
+    "destination": "kernel/hook/hook_manager.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/include/arch.h",
+    "destination": "kernel/include/arch.h",
+    "conflict": false
+  },
+  {
+    "upstream": "kernel/include/klog.h",
+    "destination": "kernel/include/klog.h",
+    "conflict": false
+  },
+  {
+    "upstream": "kernel/include/util.h",
+    "destination": "kernel/include/util.h",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/infra/su_mount_ns.c",
+    "destination": "kernel/infra/su_mount_ns.c",
+    "conflict": false
+  },
+  {
+    "upstream": "kernel/manager/apk_sign.c",
+    "destination": "kernel/manager/apk_sign.c",
+    "conflict": false
+  },
+  {
+    "upstream": "kernel/manager/apk_sign.h",
+    "destination": "kernel/manager/apk_sign.h",
+    "conflict": false
+  },
+  {
+    "upstream": "kernel/manager/pkg_observer.c",
+    "destination": "kernel/manager/pkg_observer.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/manager/throne_tracker.c",
+    "destination": "kernel/manager/throne_tracker.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/runtime/ksud_integration.c",
+    "destination": "kernel/runtime/ksud_integration.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/selinux/rules.c",
+    "destination": "kernel/selinux/rules.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/selinux/sepolicy.c",
+    "destination": "kernel/selinux/sepolicy.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/selinux/sepolicy.h",
+    "destination": "kernel/selinux/sepolicy.h",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/supercall/dispatch.c",
+    "destination": "kernel/supercall/dispatch.c",
+    "conflict": true
+  },
+  {
+    "upstream": "kernel/supercall/supercall.c",
+    "destination": "kernel/supercall/supercall.c",
+    "conflict": true
+  }
+]

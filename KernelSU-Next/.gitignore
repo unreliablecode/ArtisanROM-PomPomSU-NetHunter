@@ -1,0 +1,4 @@
+/userspace
+/manager
+*.o
+*.cmd

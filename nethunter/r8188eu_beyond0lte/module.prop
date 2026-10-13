@@ -1,0 +1,6 @@
+id=r8188eu_beyond0lte
+name=G970N RTL8188EU Driver
+version=1.0
+versionCode=1
+author=Artisan / PomPomSU
+description=RTL8188EU module with embedded firmware for the G970N PomPomSU NetHunter kernel.
